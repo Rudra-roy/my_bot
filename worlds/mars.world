@@ -1,0 +1,63 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="default">
+    <!-- Insert your converted Collada model -->
+    <model name="map_model">
+      <pose>0 0 0.1 0 0 0</pose>
+      <static>true</static> <!-- Makes the map static -->
+      <link name="map_link">
+        <collision name="collision">
+          <geometry>
+            <mesh>
+              <uri>model://mars/meshes/marsfield.dae</uri> <!-- Path to your map file -->
+            </mesh>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <mesh>
+              <uri>model://mars/meshes/marsfield.dae</uri> <!-- Same path here -->
+            </mesh>
+          </geometry>
+        </visual>
+      </link>
+    </model>
+
+    <!-- Add a light source -->
+    <light name="sun" type="directional">
+      <cast_shadows>true</cast_shadows>
+      <diffuse>1 1 1 1</diffuse>
+      <specular>0.1 0.1 0.1 1</specular>
+      <direction>-0.5 0.5 -1</direction>
+    </light>
+
+    <!-- Ground plane (optional, can be removed if the map covers everything) -->
+    <!--<model name="ground_plane">
+      <static>true</static>
+      <link name="link">
+        <collision name="collision">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+        </collision>
+        <visual name="visual">
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+      </link>
+    </model>-->
+  </world>
+</sdf>

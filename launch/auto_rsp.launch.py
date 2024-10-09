@@ -11,7 +11,6 @@ import xacro
 
 
 def generate_launch_description():
-
     # Check if we're told to use sim time
     use_sim_time = LaunchConfiguration('use_sim_time')
 
@@ -19,6 +18,7 @@ def generate_launch_description():
     pkg_path = os.path.join(get_package_share_directory('my_bot'))
     xacro_file = os.path.join(pkg_path,'description','test.urdf.xacro')
     robot_description_config = xacro.process_file(xacro_file)
+    # config_path= os.path.join(pkg_path, "config", "gazebo_controllers.yaml")
     
     # Create a robot_state_publisher node
     params = {'robot_description': robot_description_config.toxml(), 'use_sim_time': use_sim_time}
@@ -28,6 +28,7 @@ def generate_launch_description():
         output='screen',
         parameters=[params]
     )
+    
 
 
     # Launch!
@@ -37,5 +38,5 @@ def generate_launch_description():
             default_value='false',
             description='Use sim time if true'),
 
-        node_robot_state_publisher
+        node_robot_state_publisher,
     ])

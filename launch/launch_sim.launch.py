@@ -15,7 +15,7 @@ def generate_launch_description():
     
     package_name='my_bot'
     pkg_path = os.path.join(get_package_share_directory('my_bot'))
-    world_path= os.path.join(pkg_path, "worlds", "obstacle.world")
+    world_path= os.path.join(pkg_path, "worlds", "empty.world")
 
 
     rsp = IncludeLaunchDescription(

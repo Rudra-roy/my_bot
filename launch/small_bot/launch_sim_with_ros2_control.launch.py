@@ -15,20 +15,21 @@ def generate_launch_description():
     
     package_name='my_bot'
     pkg_path = os.path.join(get_package_share_directory('my_bot'))
-    world_path= os.path.join(pkg_path, "worlds", "obstacle.world")
+    world_path= os.path.join(pkg_path, "worlds", "empty.world")
 
 
     rsp = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory(package_name),'launch','auto_rsp.launch.py'
+                    get_package_share_directory(package_name),'launch','rsp.launch.py'
                 )]), launch_arguments={'use_sim_time': 'true'}.items()
     )
 
     # Include the Gazebo launch file, provided by the gazebo_ros package
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
-                    get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]),
+                    get_package_share_directory('gazebo_ros'), 'launch/small_bot', 'gazebo.launch.py')]),
                     launch_arguments={'world': world_path}.items()
+
              )
 
     # Run the spawner node from the gazebo_ros package. The entity name doesn't really matter if you only have a single robot.
@@ -40,13 +41,13 @@ def generate_launch_description():
     diff_drive_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["gazebo_velocity_controller"],
+        arguments=["velocity_controller"],
     )
 
     joint_broad_spawner = Node(
         package="controller_manager",
         executable="spawner",
-        arguments=["joint_state_broadcaster"],
+        arguments=["state_broadcaster"],
     )
 
 

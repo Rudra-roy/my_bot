@@ -7,7 +7,7 @@
         <collision name='collision'>
           <geometry>
             <mesh>
-              <uri>model://mars/meshes/marsfield.stl</uri>
+              <uri>model://mars/meshes/marsfield.dae</uri>
             </mesh>
           </geometry>
           <max_contacts>10</max_contacts>
@@ -27,7 +27,7 @@
         <visual name='visual'>
           <geometry>
             <mesh>
-              <uri>model://mars/meshes/marsfield.stl</uri>
+              <uri>model://mars/meshes/marsfield.dae</uri>
             </mesh>
           </geometry>
         </visual>
